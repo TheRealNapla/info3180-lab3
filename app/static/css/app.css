@@ -1,3 +1,22 @@
 body {
     padding-top: 5rem;
+    font-size: 16px;
+}
+
+h5{
+    font-weight: 600;
+}
+
+.required {
+    color: red;
+}
+
+.field-ctnr {
+    padding: 0 0 1.5rem 0;
+}
+
+.btn {
+    padding: 1rem 3rem 1rem 3rem;
+    font-weight: bold;
+    font-size: 18px;
 }

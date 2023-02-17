@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block main %}
+    <h1>Contact Form</h1>
+    <hr>
+    <div class = "content-section">
+        <form method = "POST" action = "{{ url_for('contact') }}">
+            {{ form.csrf_token }}
+            <fieldset class = "form-group col-md-4">
+                <p>Fill in this form to contact the site owners.</p>
+                <div class = "field-ctnr form-group">
+                    <h5> {{ form.name.label(class="form-control-label") }} <span class="required">(Required)</span></h5>
+
+                    <p>Please enter your full name.</p>
+                    {% if form.name.errors %}
+                        {{ form.name(class="form-control is-invalid") }}
+                        <div class = "invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.name(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class = "field-ctnr form-group">
+                    <h5> {{ form.email.label(class="form-control-label") }} <span class="required">(Required)</span></h5>
+
+                    <p>Please enter your e-mail address.</p>
+                    {% if form.email.errors %}
+                    {{ form.email(class="form-control is-invalid") }}
+                    <div class = "invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span> {{ error }} </span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.email(class="form-control", placeholder="example@email.com") }}
+                    {% endif %}
+                </div>
+                <div class = "field-ctnr form-group">
+                    <h5> {{ form.subject.label(class="form-control-label") }} <span class="required">(Required)</span></h5>
+
+                    <p>Please enter the subject for your message.</p>
+                    {% if form.subject.errors %}
+                    {{ form.subject(class="form-control is-invalid") }}
+                    <div class = "invalid-feedback">
+                        {% for error in form.subject.errors %}
+                            <span> {{ error }} </span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.subject(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class = "field-ctnr form-group">
+                    <h5> {{ form.message.label(class="form-control-label") }} <span class="required">(Required)</span></h5>
+
+                    <p>Please enter the message you would like to send.</p>
+                    {% if form.message.errors %}
+                    {{ form.message(class="form-control form-control-lg is-invalid") }}
+                    <div class = "invalid-feedback">
+                        {% for error in form.message.errors %}
+                            <span> {{ error }} </span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.message(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class = "form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+{% endblock main %}
